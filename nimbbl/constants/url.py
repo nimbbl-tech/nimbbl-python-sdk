@@ -60,4 +60,5 @@ class URL(object):
     TRAITS="traits";
     Enquiry_CREATED="Enquiry Submitted"
     Enquiry_RECIEVED="Enquiry Recieved"
-    STATUS="Status"
+    STATUS="status";
+    Transaction_id="Transaction Id";

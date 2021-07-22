@@ -114,6 +114,7 @@ class Segment(Resource):
         prop[URL.KIT_NAME] = URL.PYTHON_SDK
         prop[URL.KIT_VERSION] = "1.0"
         prop[URL.MERCHANT_ID]= self.client.merchent
+        prop[URL.Transaction_id]= tranaction_id
         prop
         jsondata[URL.PROPERTIES] = prop
         jsondata[URL.TIMESTAMP] = str(datetime.datetime.now())
@@ -130,6 +131,7 @@ class Segment(Resource):
         prop[URL.KIT_VERSION] = "1.0"
         prop[URL.MERCHANT_ID]= self.client.merchent
         prop[URL.STATUS]=json_Res["status"]
+        prop[URL.Transaction_id]= json_Res["transaction_id"]
         jsondata[URL.PROPERTIES] = prop
         jsondata[URL.TIMESTAMP] = str(datetime.datetime.now())
         return self.track(jsondata)
