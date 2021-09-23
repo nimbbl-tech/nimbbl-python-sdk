@@ -1,9 +1,10 @@
 from .segment import Segment
-from nimbbl import constants
+import src.constants
 from os import access, error
 from .base import Resource
 from ..constants.url import URL
-from nimbbl.errors import UnsupportedMethodError
+from src.errors import UnsupportedMethodError
+from src.errors import BadRequestError
 import warnings
 
 
@@ -22,7 +23,10 @@ class Order(Resource):
     def fetch_one(self, order_id, data={}, **kwargs):
         base_url="{}/{}".format(self.base_url,URL.ORDER_GET)
         res= self.fetch(base_url,order_id, data, **kwargs)
-        return res
+        if res["message"]=="Order Created Successfully":
+            return res
+        else:
+            raise BadRequestError(res["message"])
 
 
     def create(self, data={},**kwargs):

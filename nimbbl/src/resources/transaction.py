@@ -1,6 +1,6 @@
 from .base import Resource
 from ..constants.url import URL
-from nimbbl.errors import UnsupportedMethodError
+from src.errors import UnsupportedMethodError
 import warnings
 from .segment import Segment
 from ..utility import Utility

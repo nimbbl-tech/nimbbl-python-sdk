@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Rakshit\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "python.pythonPath": "C:\\Users\\Rakshit.Malik\\AppData\\Local\\Programs\\Python\\Python37\\python37.exe",
     "python.testing.pytestArgs": [
         "tests"
     ],

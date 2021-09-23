@@ -1,7 +1,7 @@
 from os import access, error
 from .base import Resource
 from ..constants.url import URL
-from nimbbl.errors import UnsupportedMethodError
+from src.errors import UnsupportedMethodError
 import warnings
 import datetime;
 import json
