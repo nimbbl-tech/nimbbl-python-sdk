@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="nimbbl-python-sdk",
-    version="0.0.1",
+    version="0.0.3",
     author="Rakshit",
     author_email="rakshit@nimbbl.biz",
     description="Nimbbl SDK for python",
@@ -20,8 +20,8 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "nimbbl"},
+    package_dir={"": "src"},
     include_package_data=True,
-    packages=setuptools.find_packages(where="nimbbl"),
+    packages=setuptools.find_packages("src"),
     python_requires=">=3.6",
 )

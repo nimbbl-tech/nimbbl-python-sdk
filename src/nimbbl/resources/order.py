@@ -1,10 +1,10 @@
 from .segment import Segment
-import src.constants
+import nimbbl.constants
 from os import access, error
 from .base import Resource
 from ..constants.url import URL
-from src.errors import UnsupportedMethodError
-from src.errors import BadRequestError
+from nimbbl.errors import UnsupportedMethodError
+from nimbbl.errors import BadRequestError
 import warnings
 
 
