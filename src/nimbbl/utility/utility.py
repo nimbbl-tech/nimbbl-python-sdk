@@ -36,19 +36,26 @@ class Utility(object):
         actualSignature = attributes['nimbbl_signature'];
         transactionId = attributes['nimbbl_transaction_id'];
         order_amount = attributes['order_amount'];
+        order_amount="{:.2f}".format(order_amount)
         order_currency = attributes['order_currency'];
         if "merchant_order_id" in attributes:
             orderId = attributes['merchant_order_id'];
-            payload = orderId + '|' + transactionId+'|'+str(order_amount)  +"|"+order_currency ;
-            payload=bytes(payload, encoding='utf-8')
+            payload = orderId + '|' + transactionId+'|'+order_amount  +"|"+order_currency ;
         else:
             raise SignatureVerificationError("merchant_order_id must be present")
-        secret=bytes(self.client.secret, encoding='utf-8');
+        print(payload)
+        secret=self.client.secret;
         return self.verifySignature(payload, actualSignature, secret);
     
     def verifySignature(self,payload,actualSignature,secret):
-        expectedSignature=hmac.new(b'{payload}', secret, hashlib.sha256).hexdigest()
+        expectedSignature=self._hmac_sha256(payload, secret)
+        print(expectedSignature)
         verified = hash(expectedSignature) == hash(actualSignature)
         return verified
+
+    def _hmac_sha256(self,signature_data, secret_key):
+        raw = signature_data.encode("utf-8")
+        key = secret_key.encode('utf-8')
+        return hmac.new(key=key, msg=raw, digestmod=hashlib.sha256).hexdigest()
     
         

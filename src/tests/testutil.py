@@ -18,7 +18,7 @@ class TestClientOrder(helpers.ClientTestCase):
         
     def test_verify_signature(self):
         signature={
-            'nimbbl_signature':'36e6022a7cdf2fc275013d40cf023cd6c2c52b3b8a3daaa7f97095823f4e0180',
+            'nimbbl_signature':'41547fa353e7e01dd6cb85715fa323fa35e3f76bf383d4041c371daff7adb645',
             'nimbbl_transaction_id':'order_BmO74B5pZQJ4W3qx-20211018144400',
             'order_amount':14.0,
             'order_currency':'INR',
