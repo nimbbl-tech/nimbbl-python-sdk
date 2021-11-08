@@ -15,7 +15,7 @@ def mock_file(filename):
 
 class ClientTestCase(unittest.TestCase):
     def setUp(self):
-        access_key="access_key_1MwvMkKkweorz0ry"
-        secret_key="access_secret_81x7ByYkRpB4g05N"
+        access_key="access_key_81x7ByYkREmW205N"
+        secret_key="access_secret_ArL0OKDKBGx5A0zP"
         self.base_url = 'https://uatapi.nimbbl.tech/api'
         self.client = nimbbl.Client(access_key,secret_key)
