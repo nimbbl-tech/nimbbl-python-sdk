@@ -93,6 +93,7 @@ class Client:
         else:
             msg = ""
             code = ""
+            print(response);
             json_response = response.json()
             if 'error' in json_response:
                 if 'description' in json_response['error']:
