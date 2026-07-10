@@ -27,6 +27,9 @@ class Order(Resource):
 
     def create(self, data={},**kwargs):
         url="{}/{}".format(self.base_url,URL.ORDER_CREATE)
+        # order_source: the creating integration, fixed by the SDK so a caller cannot spoof it.
+        # No SDK version constant is available here, so send the 0.0.0 sentinel.
+        data = {**data, "order_source": "python-sdk", "order_source_version": "0.0.0"}
         self.segment.orderReq(data)
         res = self.post_url(url,data, **kwargs)
         self.segment.orderRes(res)
