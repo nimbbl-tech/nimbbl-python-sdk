@@ -26,7 +26,8 @@ class Order(Resource):
         return res
 
 
-    def create(self, data={},**kwargs):
+    def create(self, data=None,**kwargs):
+        data = dict(data) if data else {}
         url="{}/{}".format(self.base_url,URL.ORDER_CREATE)
         # order_source is fixed by the creating SDK (anti-spoof); a caller cannot override it.
         data[ORDER_SOURCE.KEY] = ORDER_SOURCE.VALUE

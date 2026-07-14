@@ -5,9 +5,11 @@ class ORDER_SOURCE(object):
 
     @staticmethod
     def version():
-        # Resolved lazily to avoid an import cycle with the package __init__.
+        # __version__ is set at the top of nimbbl/__init__.py before submodules load, so it is
+        # always available by the time create() runs. Narrow catch: fall back only if it is
+        # genuinely absent (removed/renamed) rather than masking unrelated errors.
         try:
             from nimbbl import __version__
             return __version__
-        except Exception:
+        except (ImportError, AttributeError):
             return "0.0.0"
