@@ -3,6 +3,7 @@ from nimbbl import constants
 from os import access, error
 from .base import Resource
 from ..constants.url import URL
+from ..constants.order_source import ORDER_SOURCE
 from nimbbl.errors import UnsupportedMethodError
 import warnings
 
@@ -25,8 +26,12 @@ class Order(Resource):
         return res
 
 
-    def create(self, data={},**kwargs):
+    def create(self, data=None,**kwargs):
+        data = dict(data) if data else {}
         url="{}/{}".format(self.base_url,URL.ORDER_CREATE)
+        # order_source is fixed by the creating SDK (anti-spoof); a caller cannot override it.
+        data[ORDER_SOURCE.KEY] = ORDER_SOURCE.VALUE
+        data[ORDER_SOURCE.VERSION_KEY] = ORDER_SOURCE.version()
         self.segment.orderReq(data)
         res = self.post_url(url,data, **kwargs)
         self.segment.orderRes(res)
